@@ -11,7 +11,7 @@ class SortTest {
         try {
             String fileName = args[0];
             inputArrayListFromFile(fileName, arrayList);
-            // TODO: Sort and Out
+            BubbleSort.sort(arrayList);
             outputArrayListToConsole(arrayList);
         }
         catch (ArrayIndexOutOfBoundsException ex) {
