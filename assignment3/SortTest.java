@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class SortTest {
@@ -15,6 +16,7 @@ class SortTest {
         }
         catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("File name not given");
+            System.exit(0);
         }
     }
 
@@ -23,17 +25,18 @@ class SortTest {
             File file = new File(filename);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
-                String[] nums = scanner.next().split(" ");
-                for (String numString : nums) {
-                    Integer num = Integer.parseInt(numString);
-                    System.out.println(num);
-                    arrayList.add(num);
-                }
+                Integer num = scanner.nextInt();
+                arrayList.add(num);
             }
             scanner.close();
         }
         catch (FileNotFoundException ex) {
             System.out.println("File not found");
+            System.exit(0);
+        }
+        catch (InputMismatchException ex) {
+            System.out.println("Only integers are allowed in the input file.");
+            System.exit(0);
         }
     }
 
