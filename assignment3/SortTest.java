@@ -5,17 +5,30 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class SortTest {
+    private static Integer MAX_SIZE = 10000;
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
 
         try {
             String fileName = args[0];
             inputArrayListFromFile(fileName, arrayList);
+
+            if (arrayList.size() > MAX_SIZE) {
+                String message = String.format(
+                    "The number of integers given must be less than or equal to %d.",
+                    MAX_SIZE);
+                throw new RuntimeException(message);
+            }
+
             BubbleSort.sort(arrayList);
             outputArrayListToConsole(arrayList);
         }
         catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("File name not given");
+            System.exit(0);
+        }
+        catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
             System.exit(0);
         }
     }
@@ -47,7 +60,7 @@ class SortTest {
                 System.out.println("\n");
                 row = 0;
             }
-            System.out.printf("%10d", integer);
+            System.out.printf("%11d", integer);
             row++;
         }
         System.out.println("\n");
