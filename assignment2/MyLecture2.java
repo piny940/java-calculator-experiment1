@@ -18,7 +18,7 @@ class MyLecture2 {
         for (int i = 0; i < courseNames.length; i++) {
             String courseName = courseNames[i];
             String courseTime = this.getCourseTime(courseName);
-            courseData[i] = courseTime + "    " + courseName;
+            courseData[i] = courseTime + "\t" + courseName;
         }
 
         return courseData;
