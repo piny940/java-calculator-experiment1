@@ -15,7 +15,7 @@ class MyLecture2 {
     private String[] toData(String[] courseNames) {
         String[] courseData = new String[courseNames.length];
 
-        for (int i = 0; i < courseNames.length; i++) {
+        for (Integer i = 0; i < courseNames.length; i++) {
             String courseName = courseNames[i];
             String courseTime = this.getCourseTime(courseName);
             courseData[i] = courseTime + "\t" + courseName;
@@ -49,7 +49,7 @@ class MyLecture2 {
         try {
             File outputFile = new File(outputFilename);
             FileWriter writer = new FileWriter(outputFile);
-            for (int i = 0; i < lines.length; i++) {
+            for (Integer i = 0; i < lines.length; i++) {
                 writer.write(lines[i] + "\n");
             }
 
