@@ -2,17 +2,24 @@ import java.util.LinkedList;
 
 public class MyList {
     public void insert(int x, LinkedList<Integer> linkedList) {
+        boolean hasInserted = false;
+
         for (int i = 0; i < linkedList.size(); i++) {
             Integer el = linkedList.get(i);
-            if (el >= x) {
-                linkedList.add(i, el);
+            if (x <= el) {
+                linkedList.add(i, x);
+                hasInserted = true;
                 break;
             }
+        }
+
+        if (!hasInserted) {
+            linkedList.add(x);
         }
     }
 
     public void delete(int x, LinkedList<Integer> linkedList) {
-        for (int i = 0; i < linkedList.size(); i++) {
+        for (int i = linkedList.size()-1; i >= 0 ; i--) {
             if (linkedList.get(i) == x) {
                 linkedList.remove(i);
             }

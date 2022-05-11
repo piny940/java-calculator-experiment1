@@ -10,33 +10,38 @@ public class MyListTest {
         LinkedList<Integer> linkedList = new LinkedList<>();
         MyList myList = new MyList();
 
-        for (int i = 0; i < FIRST_INPUT_TIME; i++) {
-            Integer input = getNatInput();
-            linkedList.add(input);
-        }
-        myList.output(linkedList);
+        try {
+            Scanner scanner = new Scanner(System.in);
 
-        for (int i = 0; i < INSERT_TIME; i++) {
-            Integer input = getNatInput();
-            myList.insert(input, linkedList);
+            for (int i = 0; i < FIRST_INPUT_TIME; i++) {
+                Integer input = getNatInput(scanner);
+                linkedList.add(input);
+            }
             myList.output(linkedList);
-        }
 
-        for (int i = 0; i < DELETE_TIME; i++) {
-            Integer input = getNatInput();
-            myList.delete(input, linkedList);
-            myList.output(linkedList);
+            for (int i = 0; i < INSERT_TIME; i++) {
+                Integer input = getNatInput(scanner);
+                myList.insert(input, linkedList);
+                myList.output(linkedList);
+            }
+
+            for (int i = 0; i < DELETE_TIME; i++) {
+                Integer input = getNatInput(scanner);
+                myList.delete(input, linkedList);
+                myList.output(linkedList);
+            }
+
+            scanner.close();
+        }
+        catch (RuntimeException ex) {
+            System.out.println(ex);
         }
     }
 
-    public static Integer getNatInput() {
+    public static Integer getNatInput(Scanner scanner) {
         try {
-            Scanner scanner = new Scanner(System.in);
-            String inputString = scanner.nextLine();
-            System.out.println(inputString);
+            String inputString = scanner.next();
             Integer input = Integer.parseInt(inputString);
-
-            scanner.close();
 
             if (input <= 0) {
                 System.out.println("Input must be natural numbers");
