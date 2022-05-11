@@ -34,7 +34,7 @@ public class MyListTest {
             scanner.close();
         }
         catch (RuntimeException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
             System.exit(0);
         }
     }
