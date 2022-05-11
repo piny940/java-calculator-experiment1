@@ -35,6 +35,7 @@ public class MyListTest {
         }
         catch (RuntimeException ex) {
             System.out.println(ex);
+            System.exit(0);
         }
     }
 
@@ -42,9 +43,10 @@ public class MyListTest {
         try {
             String inputString = scanner.next();
             Integer input = Integer.parseInt(inputString);
-
+            
             if (input <= 0) {
                 System.out.println("Input must be natural numbers");
+                System.exit(0);
             }
 
             return input;
