@@ -2,14 +2,12 @@ import java.util.ArrayList;
 
 public class InsertSort {
     public static void sort(ArrayList<Integer> list) {
-        ArrayList<Integer> copiedList = new ArrayList<Integer>(list);
-        list.clear();
-
-        for (Integer i = 0; i < copiedList.size(); i++) {
-            Integer value = copiedList.get(i);
+        for (int i = 0; i < list.size(); i++) {
+            Integer value = list.get(i);
+            list.remove(i);
 
             Boolean added = false;
-            for (Integer j = 0; j < list.size(); j++) {
+            for (int j = 0; j < i; j++) {
                 if (value <= list.get(j)) {
                     list.add(j, value);
                     added = true;
@@ -18,7 +16,7 @@ public class InsertSort {
             }
             
             if (!added) {
-                list.add(value);
+                list.add(i, value);
             }
         }
     }
