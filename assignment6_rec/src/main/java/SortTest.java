@@ -10,8 +10,7 @@ class SortTest {
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
 
         try {
-            // String fileName = args[0];
-            String fileName = "test.txt";
+            String fileName = args[0];
             inputArrayListFromFile(fileName, arrayList);
 
             if (arrayList.size() > MAX_SIZE) {

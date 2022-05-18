@@ -22,7 +22,7 @@ public class RecursiveHeapSort {
     }
 
     public static void heapify(ArrayList<Integer> list, Integer m, Integer n) {
-        Integer pIdx = (int)Math.pow(2, m-1) + n; // The index of the parent.
+        Integer pIdx = (int)Math.pow(2, m) - 1 + n; // The index of the parent.
         Integer lcIdx = (int)Math.pow(2, m+1) - 1 + 2 * n; // The index of the left child.
         Integer rcIdx = (int)Math.pow(2, m+1) + 2 * n; // The index of the right child.
 
@@ -47,7 +47,7 @@ public class RecursiveHeapSort {
             swap(list, pIdx, lcIdx);
             heapify(list, m+1, 2*n);
         }
-        else if (rc < lc && rc < p) {
+        else if (rc <= lc && rc < p) {
             swap(list, pIdx, rcIdx);
             heapify(list, m+1, 2*n+1);
         }
@@ -55,7 +55,7 @@ public class RecursiveHeapSort {
 
     public static void buildHeap(ArrayList<Integer> list) {
         for (int i = list.size()-1; i >= 0; i--) {
-            Integer m = (int)(Math.floor(Math.log(i) / Math.log(2)));
+            Integer m = (int)(Math.floor(Math.log(i+1) / Math.log(2)));
             Integer n = i + 1 - (int)Math.pow(2, m);
             heapify(list, m, n);
         }
