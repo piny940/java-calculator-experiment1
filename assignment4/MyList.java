@@ -30,9 +30,7 @@ public class MyList {
         String output = "";
         for (int i = 0; i < linkedList.size(); i++) {
             output += linkedList.get(i);
-            if (i == linkedList.size() - 1) {
-                output += "\n";
-            } else {
+            if (i != linkedList.size() - 1) {
                 output += " ";
             }
         }
