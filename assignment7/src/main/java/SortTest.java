@@ -57,12 +57,12 @@ class SortTest {
         Integer row = 0;
         for (Integer integer : arrayList) {
             if (row > 9) {
-                System.out.println("\n");
+                System.out.println("");
                 row = 0;
             }
-            System.out.printf("%11d", integer);
+            System.out.printf("%12d", integer);
             row++;
         }
-        System.out.println("\n");
+        System.out.println("");
     }
 }
