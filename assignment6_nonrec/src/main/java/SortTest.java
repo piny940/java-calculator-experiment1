@@ -20,7 +20,7 @@ class SortTest {
                 throw new RuntimeException(message);
             }
 
-            RecursiveHeapSort.sort(arrayList);
+            NonrecursiveHeapSort.sort(arrayList);
             outputArrayListToConsole(arrayList);
         }
         catch (ArrayIndexOutOfBoundsException ex) {
@@ -60,7 +60,7 @@ class SortTest {
                 System.out.println();
                 row = 0;
             }
-            System.out.printf("%11d", integer);
+            System.out.printf("%12d", integer);
             row++;
         }
         System.out.println();
