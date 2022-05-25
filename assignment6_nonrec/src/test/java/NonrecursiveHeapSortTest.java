@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,5 +39,12 @@ public class NonrecursiveHeapSortTest {
                 Arrays.asList(1,2,2,3,3,4,4,4,6,32)
         );
         assertEquals(expected3, list3);
+    }
+
+    @Test
+    public void getChildrenIdx() {
+        int[] children = NonrecursiveHeapSort.getChildrenIdx(2);
+        int[] expected4 = { 5, 6 };
+        assertTrue(Arrays.equals(children, expected4));
     }
 }
