@@ -7,7 +7,7 @@ import java.util.Scanner;
 class SortTest {
     private static Integer MAX_SIZE = 10000;
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        ArrayList<String> arrayList = new ArrayList<String>();
 
         try {
             String fileName = args[0];
@@ -15,7 +15,7 @@ class SortTest {
 
             if (arrayList.size() > MAX_SIZE) {
                 String message = String.format(
-                    "The number of integers given must be less than or equal to %d.",
+                    "The number of texts given must be less than %d.",
                     MAX_SIZE);
                 throw new RuntimeException(message);
             }
@@ -33,13 +33,20 @@ class SortTest {
         }
     }
 
-    private static void inputArrayListFromFile(String filename, ArrayList<Integer> arrayList) {
+    private static void inputArrayListFromFile(String filename, ArrayList<String> arrayList) {
         try {
             File file = new File(filename);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
-                Integer num = scanner.nextInt();
-                arrayList.add(num);
+                String string = scanner.next();
+
+                for (String element : string.split("\\.|,| ")) {
+                    if (element.matches(".*[0-9]*.*")) {
+                        continue;
+                    }
+                    element = element.toLowerCase();
+                    arrayList.add(element);
+                }
             }
             scanner.close();
         }
@@ -47,22 +54,11 @@ class SortTest {
             System.out.println("File not found");
             System.exit(0);
         }
-        catch (InputMismatchException ex) {
-            System.out.println("Only integers are allowed in the input file.");
-            System.exit(0);
-        }
     }
 
-    private static void outputArrayListToConsole(ArrayList<Integer> arrayList) {
-        Integer row = 0;
-        for (Integer integer : arrayList) {
-            if (row > 9) {
-                System.out.println();
-                row = 0;
-            }
-            System.out.printf("%12d", integer);
-            row++;
+    private static void outputArrayListToConsole(ArrayList<String> arrayList) {
+        for (String line : arrayList) {
+            System.out.println(line);
         }
-        System.out.println();
     }
 }
