@@ -40,7 +40,7 @@ class SortTest {
                 String string = scanner.next();
 
                 for (String element : string.split("\\.|,| ")) {
-                    if (element.matches(".*[0-9]*.*")) {
+                    if (!element.matches("[a-zA-z]+")) {
                         continue;
                     }
                     element = element.toLowerCase();
@@ -51,6 +51,10 @@ class SortTest {
         }
         catch (FileNotFoundException ex) {
             System.out.println("File not found");
+            System.exit(0);
+        }
+        catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
             System.exit(0);
         }
     }
