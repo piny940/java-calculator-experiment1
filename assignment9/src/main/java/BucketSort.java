@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class BucketSort {
-    private static final int BUCKET_SIZE = 26;
+    private static int bucketSize = 'z' - 'a' + 1;
 
     public static void sort(ArrayList<String> list) {
         ArrayList<String>[] bucket = putTextsInBucket(list);
@@ -25,7 +25,7 @@ public class BucketSort {
     }
 
     public static ArrayList<String>[] putTextsInBucket(ArrayList<String> list) {
-        ArrayList<String>[] bucket = new ArrayList[BUCKET_SIZE];
+        ArrayList<String>[] bucket = new ArrayList[bucketSize];
         for (int i = 0; i < bucket.length; i++) {
             bucket[i] = new ArrayList<String>();
         }

@@ -9,6 +9,10 @@ class SortTest {
         ArrayList<String> arrayList = new ArrayList<String>();
 
         try {
+            if (args.length < 1) {
+                String message = "File name not given";
+                throw new RuntimeException(message);
+            }
             String fileName = args[0];
             inputArrayListFromFile(fileName, arrayList);
 
@@ -21,10 +25,6 @@ class SortTest {
 
             BucketSort.sort(arrayList);
             outputArrayListToConsole(arrayList);
-        }
-        catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println("File name not given");
-            System.exit(0);
         }
         catch (RuntimeException ex) {
             System.out.println(ex.getMessage());
@@ -40,7 +40,7 @@ class SortTest {
                 String string = scanner.next();
 
                 for (String element : string.split("\\.|,| ")) {
-                    if (!element.matches("[a-zA-z]+")) {
+                    if (!element.matches("[a-zA-Z]+")) {
                         continue;
                     }
                     element = element.toLowerCase();
