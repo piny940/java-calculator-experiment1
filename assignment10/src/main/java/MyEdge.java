@@ -11,28 +11,6 @@ public class MyEdge {
         this.weight = weight;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (object == this) {
-            return true;
-        }
-
-        if (!(object instanceof MyEdge)) {
-            return false;
-        }
-
-        MyEdge edge = (MyEdge)object;
-
-        return this.node1 == edge.node1
-                && this.node2 == edge.node2
-                && this.weight == edge.weight;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.node1, this.node2, this.weight);
-    }
-
     public Integer[] getNodes() {
         Integer[] nodes = { this.node1, this.node2 };
         return nodes;

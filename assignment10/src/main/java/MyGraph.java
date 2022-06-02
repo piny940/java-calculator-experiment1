@@ -28,7 +28,10 @@ public class MyGraph {
                 }
 
                 this.edges[nums[0]].add(new MyEdge(nums[0], nums[1], nums[2]));
+                this.edges[nums[1]].add(new MyEdge(nums[0], nums[1], nums[2]));
             }
+
+            scanner.close();
         }
         catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
