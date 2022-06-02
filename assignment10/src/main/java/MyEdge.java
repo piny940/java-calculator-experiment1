@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class MyEdge {
     private Integer node1;
     private Integer node2;
