@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class MyGraph {
@@ -69,6 +70,9 @@ public class MyGraph {
         catch (NumberFormatException ex) {
             System.out.println("Input must be an integer value.");
             System.exit(0);
+        }
+        catch (NoSuchElementException ex) {
+            System.out.println("The actual number of edges given is less than the number of edges specified in the file.");
         }
         catch (RuntimeException ex) {
             System.out.println(ex.getMessage());

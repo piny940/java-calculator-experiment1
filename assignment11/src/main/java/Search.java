@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 public class Search {
-    public ArrayList<Integer> depthFirstSearch(MyGraph graph, Integer v0) {
+    public ArrayList<Integer> breadthFirstSearch(MyGraph graph, Integer v0) {
         Queue<Integer> queue = new Queue<>();
 
         return searchBase(graph, v0, queue);
     }
 
-    public ArrayList<Integer> breadthFirstSearch(MyGraph graph, Integer v0) {
+    public ArrayList<Integer> depthFirstSearch(MyGraph graph, Integer v0) {
         Stack<Integer> stack = new Stack<>();
 
         return searchBase(graph, v0, stack);
