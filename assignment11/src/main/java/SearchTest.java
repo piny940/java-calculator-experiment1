@@ -13,9 +13,8 @@ public class SearchTest {
             MyGraph graph = new MyGraph();
             graph.readFromFile(filename);
             
-            Search search = new Search();
-            ArrayList<Integer> depthSearchResult = search.depthFirstSearch(graph, v0);
-            ArrayList<Integer> breadthSearchResult = search.breadthFirstSearch(graph, v0);
+            ArrayList<Integer> depthSearchResult = graph.depthFirstSearch(v0);
+            ArrayList<Integer> breadthSearchResult = graph.breadthFirstSearch(v0);
 
             System.out.println("---- DepthFirstSearch ----");
             for (Integer el : depthSearchResult) {

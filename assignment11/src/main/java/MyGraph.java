@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -93,5 +95,36 @@ public class MyGraph {
         }
 
         return nodes;
+    }
+
+    public ArrayList<Integer> breadthFirstSearch(Integer v0) {
+        Queue<Integer> queue = new Queue<>();
+
+        return searchBase(v0, queue);
+    }
+
+    public ArrayList<Integer> depthFirstSearch(Integer v0) {
+        Stack<Integer> stack = new Stack<>();
+
+        return searchBase(v0, stack);
+    }
+
+    private ArrayList<Integer> searchBase(Integer v0, Bucket<Integer> foundBucket) {
+        LinkedHashSet<Integer> searched = new LinkedHashSet<>();
+
+        foundBucket.add(v0);
+
+        while (foundBucket.size() > 0) {
+            Integer v = foundBucket.Pick();
+            searched.add(v);
+
+            for (Integer node : this.getLinkedNodes(v)) {
+                if (!searched.contains(node)) {
+                    foundBucket.add(node);
+                }
+            }
+        }
+
+        return new ArrayList<Integer>(searched);
     }
 }
