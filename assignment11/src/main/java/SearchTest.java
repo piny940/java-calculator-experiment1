@@ -25,10 +25,12 @@ public class SearchTest {
             for (Integer el : breadthSearchResult) {
                 System.out.println(el);
             }
-        } catch (InputMismatchException ex) {
+        }
+        catch (InputMismatchException ex) {
             System.out.println(ex.getMessage());
             System.exit(0);
-        } catch (RuntimeException ex) {
+        }
+        catch (RuntimeException ex) {
             System.out.println(ex.getMessage());
             System.exit(0);
         }
