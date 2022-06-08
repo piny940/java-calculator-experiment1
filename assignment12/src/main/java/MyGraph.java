@@ -93,7 +93,7 @@ public class MyGraph {
         return nodes;
     }
 
-    private Integer getWeight(Integer v, Integer w) {
+    public Integer getWeight(Integer v, Integer w) {
         LinkedList<MyEdge> edges = this.getEdges(v);
         for (MyEdge edge : edges) {
             if (Arrays.asList(edge.getNodes()).contains(w)) {
