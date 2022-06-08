@@ -107,7 +107,7 @@ public class MyGraph {
         return this.edges.length;
     }
 
-    public Integer[] explore(Integer start, Integer end) {
+    public Integer[] getShortestPath(Integer start, Integer end) {
         Integer[] distances = new Integer[this.size()];
         Integer[] prevs = new Integer[this.size()];
         ArrayList<Integer> found = new ArrayList<>();
