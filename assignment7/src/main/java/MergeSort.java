@@ -17,16 +17,30 @@ public class MergeSort {
 
     public static void merge(ArrayList<Integer> list, Integer startIdx, Integer endIdx) {
         Integer size = endIdx - startIdx;
-        int formerIdx = startIdx;
-        int latterIdx = startIdx + size/2;
-        while (formerIdx < latterIdx && latterIdx < endIdx) {
-            if (list.get(formerIdx) > list.get(latterIdx)) {
-                Integer latterValue = list.get(latterIdx);
-                list.remove(latterIdx);
-                list.add(formerIdx, latterValue);
+        int formerIdx = 0;
+        int latterIdx = size / 2;
+        int current = startIdx;
+        Integer[] tmpArr = new Integer[size];
+
+        for (int i = 0; i < size; i++) {
+            tmpArr[i] = list.get(startIdx + i);
+        }
+
+        while (formerIdx < size / 2 && latterIdx < size) {
+            if (tmpArr[formerIdx] > tmpArr[latterIdx]) {
+                list.set(current, tmpArr[latterIdx]);
                 latterIdx++;
             }
-            formerIdx++;
+            else {
+                list.set(current, tmpArr[formerIdx]);
+                formerIdx++;
+            }
+            current++;
+        }
+
+        int remaining = size / 2 - formerIdx;
+        for (int i = 0; i < remaining; i++) {
+            list.set(current + i, tmpArr[formerIdx + i]);
         }
     }
 }
