@@ -7,9 +7,12 @@ public class MyGraphTest {
     public static void main(String[] args) {
         try {
             Scanner scanner = new Scanner(System.in);
-            String filename = scanner.nextLine();
-            int start = Integer.parseInt(scanner.nextLine());
-            int end = Integer.parseInt(scanner.nextLine());
+            // String filename = scanner.nextLine();
+            // int start = Integer.parseInt(scanner.nextLine());
+            // int end = Integer.parseInt(scanner.nextLine());
+            String filename = "graph.txt";
+            int start = 7;
+            int end = 0;
             scanner.close();
 
             MyGraph graph = new MyGraph();

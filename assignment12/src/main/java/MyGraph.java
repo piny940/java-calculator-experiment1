@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class MyGraph {
@@ -100,53 +101,51 @@ public class MyGraph {
                 return edge.getWeight();
             }
         }
-        throw new RuntimeException("The vertices v and w are not connected.");
+        String message = String.format("The vertices %s and %s are not connected.", v, w);
+        throw new RuntimeException(message);
     }
 
-    private int size() {
+    private int getNodeSize() {
         return this.edges.length;
     }
 
     public Integer[] getShortestPath(Integer start, Integer end) {
-        Integer[] distances = new Integer[this.size()];
-        Integer[] prevs = new Integer[this.size()];
-        ArrayList<Integer> found = new ArrayList<>();
+        int size = this.getNodeSize();
+        boolean[] determined = new boolean[size];
+        Integer[] distances = new Integer[size];
+        Integer[] prevs = new Integer[size];
 
+        PriorityQueue<Node> found = new PriorityQueue<>();
+
+        for (int i = 0; i < size; i++) {
+            distances[i] = Integer.MAX_VALUE;
+        }
         distances[start] = 0;
-        found.add(start);
-        
+
+        found.add(new Node(start, 0));
+
         while (true) {
             if (found.size() == 0) {
-                throw new RuntimeException("The end point is not connected to the start point.");
+                break;
             }
 
-            // Find the vertex in the found list that has the smallest distance from the
-            // starting point.
-            Integer minNode = found.get(0);
-            Integer minDistance = distances[minNode];
-            for (Integer node : found) {
-                if (distances[node] < minDistance) {
-                    minNode = node;
-                    minDistance = distances[node];
-                }
+            Node node = found.poll();
+            int minId = node.id;
+            
+            if (determined[minId]) {
+                continue;
             }
+            determined[minId] = true;
 
-            if (minNode == end) {
-                return prevs;
-            }
-
-            found.remove(minNode);
-            for (Integer el : this.getLinkedNodes(minNode)) {
-                if (distances[el] == null) {
-                    distances[el] = minDistance + this.getWeight(minNode, el);
-                    prevs[el] = minNode;
-                    found.add(el);
-                }
-                else if (distances[el] > distances[minNode] + this.getWeight(el, minNode)) {
-                    distances[el] = minDistance + this.getWeight(minNode, el);
-                    prevs[el] = minNode;
+            for (int nextId : this.getLinkedNodes(minId)) {
+                if (distances[nextId] > distances[minId] + this.getWeight(minId, nextId)) {
+                    distances[nextId] = distances[minId] + this.getWeight(minId, nextId);
+                    found.add(new Node(nextId, distances[nextId]));
+                    prevs[nextId] = minId;
                 }
             }
         }
+
+        return prevs;
     }
 }
