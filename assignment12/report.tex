@@ -55,12 +55,12 @@ graph.txt  \\
 %（MyGraphやMyEdgeなど）それぞれについて，
 % subsectionを作成し，クラス仕様を記述すること
 
-\subsection{Nodeクラス}
+\subsection{MyEdgeクラス}
 
 \subsubsection{役割}
 % このクラスが持つ役割を簡潔に数行で記述する．
-このクラスはグラフ内の辺を表す。辺の両端の頂点と辺の重みを変数として保持し、メソッドを呼び出すことで
-それらを取得することができる。
+このクラスはグラフ内の辺を表す。辺の両端の頂点と辺の重みを変数として保持し、このクラスのインスタンス
+メソッドを呼び出すことでそれらを取得することができる。
 
 \subsubsection{メンバ変数}
 %クラスが持つすべてのメンバ変数について，descriptionで記述
@@ -87,7 +87,6 @@ graph.txt  \\
 \item[インタフェース]\ \vspace{0mm}
 \begin{enumerate}
   \item 引数: なし
-  \item 用途: 辺の両端の頂点を取得する。
   \item 返り値の型: Integer[]
 \end{enumerate}
 \end{description}
@@ -96,12 +95,11 @@ graph.txt  \\
 
 \begin{description}
 \item[機能]
-辺の両端の頂点番号を配列として返す。
+辺の重みを返す。
 
 \item[インタフェース]\ \vspace{0mm}
 \begin{enumerate}
   \item 引数: なし
-  \item 用途: 辺の重みを返す。
   \item 返り値の型: Integer[]
 \end{enumerate}
 \end{description}
