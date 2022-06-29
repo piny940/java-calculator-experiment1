@@ -211,6 +211,42 @@ graph.txt  \\
 \end{enumerate}
 \end{description}
 
+\subsection{Nodeクラス}
+
+\subsubsection{役割}
+% このクラスが持つ役割を簡潔に数行で記述する．
+このクラスは頂点そのものを表す。ダイクストラ法において、すでに訪れた頂点の集合\(found\)の中から
+始点からの距離が最も小さい頂点を取り出す際、通常の配列を用いると\(O(n)\)かかってしまうため、\(PriorityQueue\)
+を用いて実装をした。ヒープは始点からの距離を基準として構成する必要があるため、頂点の大小を
+始点からの距離で測るよう\(compareTo\)メソッドが\(Override\)して実装されている。
+
+\subsubsection{メンバ変数}
+%クラスが持つすべてのメンバ変数について，descriptionで記述
+
+\begin{description}
+\item[Integer id]
+頂点番号を保持する。
+
+\item[Integer distance]
+始点からの距離を保持する。
+
+\end{description}
+
+%クラスが持つすべてのメソッドについて，subsubsectionを作り，説明
+\subsubsection{compareTo}
+
+\begin{description}
+\item[機能]
+頂点の順序関係を表す。自身と引数で与えられた頂点を比べて、始点からの距離が自身の方が小さければ
+負の値を、大きければ正の値を返し、等しければ0を返す。
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: Node node
+  \item 返り値の型: int
+\end{enumerate}
+\end{description}
+
 
 \section{プログラムの評価}
 
