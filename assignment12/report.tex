@@ -126,7 +126,7 @@ graph.txt  \\
 \item[final integer MIN\_WEIGHT]
 許容可能な辺の重みの最小値を表す。
 
-\item[LinkedList\textless MyEdge \textgreater[] ]
+\item[LinkedList\textless MyEdge\textgreater[] ]
 許容可能な辺の重みの最小値を表す。
 
 \end{description}
@@ -233,7 +233,7 @@ graph.txt  \\
 \end{description}
 
 %クラスが持つすべてのメソッドについて，subsubsectionを作り，説明
-\subsubsection{compareTo}
+\subsubsection{compareToメソッド}
 
 \begin{description}
 \item[機能]
@@ -244,6 +244,33 @@ graph.txt  \\
 \begin{enumerate}
   \item 引数: Node node
   \item 返り値の型: int
+\end{enumerate}
+\end{description}
+
+\subsection{MyGraphTestクラス}
+
+\subsubsection{役割}
+% このクラスが持つ役割を簡潔に数行で記述する．
+このクラスは、MyGraphクラスのgetShortestPathメソッドをテストするのに用いる。
+
+\subsubsection{メンバ変数}
+%クラスが持つすべてのメンバ変数について，descriptionで記述
+なし。
+
+%クラスが持つすべてのメソッドについて，subsubsectionを作り，説明
+\subsubsection{mainメソッド}
+
+\begin{description}
+\item[機能]
+MyGraphクラスの\(getShortestPath\)をテストする。
+標準入力から、入力ファイルの名前と始点・終点の頂点番号を受け取り、始点から終点までの最短経路と
+それにかかるコストを標準出力に出力する。
+
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: String[] args
+  \item 返り値の型: なし
 \end{enumerate}
 \end{description}
 
