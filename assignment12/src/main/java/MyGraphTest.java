@@ -26,6 +26,10 @@ public class MyGraphTest {
                     break;
                 }
 
+                if (prevs[point] == null) {
+                    String message = "The start and end points are not connected.";
+                    throw new RuntimeException(message);
+                }
                 weightSum += graph.getWeight(point, prevs[point]);
                 point = prevs[point];
                 path.add(0, point);
@@ -48,6 +52,7 @@ public class MyGraphTest {
         }
         catch (NoSuchElementException ex) {
             System.out.println("The actual number of edges given is less than the number of edges specified in the file.");
+            System.exit(0);
         }
         catch (RuntimeException ex) {
             System.out.println(ex.getMessage());
