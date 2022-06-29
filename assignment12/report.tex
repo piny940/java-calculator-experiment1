@@ -49,6 +49,7 @@ graph.txt  \\
 \end{screen}
 
 \section{クラス仕様}
+この章では実装したクラスの仕様を説明する。
 % クラス仕様とは，そのクラスが持つ役割，
 % メンバ変数，メソッドなどの仕様を記述したものである．
 % 本レポートでは，自身が作成したクラス
@@ -100,6 +101,112 @@ graph.txt  \\
 \item[インタフェース]\ \vspace{0mm}
 \begin{enumerate}
   \item 引数: なし
+  \item 返り値の型: Integer[]
+\end{enumerate}
+\end{description}
+
+\subsection{MyGraphクラス}
+
+\subsubsection{役割}
+このクラスはグラフそのものを表す。入力ファイルからグラフを読み取って辺をリストとして保持する。
+グラフに対する種々の操作を行うためのメソッドが用意されている。
+
+\subsubsection{メンバ変数}
+
+\begin{description}
+\item[final int MAX\_NODES\_NUM]
+許容可能な頂点の個数の最大値を表す。
+
+\item[final int MAX\_EDGES\_NUM]
+許容可能な辺の個数の最大値を表す。
+
+\item[final integer MAX\_WEIGHT]
+許容可能な辺の重みの最大値を表す。
+
+\item[final integer MIN\_WEIGHT]
+許容可能な辺の重みの最小値を表す。
+
+\item[LinkedList\textless MyEdge \textgreater[] ]
+許容可能な辺の重みの最小値を表す。
+
+\end{description}
+
+%クラスが持つすべてのメソッドについて，subsubsectionを作り，説明
+\subsubsection{readFromFileメソッド}
+
+\begin{description}
+\item[機能]
+入力ファイルからグラフを読み取って辺をリストとして保持する
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: String filename
+  \item 返り値: なし
+\end{enumerate}
+\end{description}
+
+\subsubsection{getEdgesメソッド}
+
+\begin{description}
+\item[機能]
+引数に与えられた頂点につながる辺のリストを返す。
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: int id
+  \item 返り値の型: LinkedList\textless MyEdge\textgreater
+\end{enumerate}
+\end{description}
+
+\subsubsection{getLinkedNodesメソッド}
+
+\begin{description}
+\item[機能]
+引数に与えられた頂点につながる頂点の配列を返す。
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: int id
+  \item 返り値の型: Integer[]
+\end{enumerate}
+\end{description}
+
+\subsubsection{getWeightメソッド}
+
+\begin{description}
+\item[機能]
+引数に与えられた2つの頂点の間の辺の重みを返す。
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: Integer v, Integer w
+  \item 返り値の型: Integer
+\end{enumerate}
+\end{description}
+
+\subsubsection{getNodeSizeメソッド}
+
+\begin{description}
+\item[機能]
+グラフ内の頂点の個数を返す。
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: なし
+  \item 返り値の型: int
+\end{enumerate}
+\end{description}
+
+\subsubsection{getShortestPathメソッド}
+
+\begin{description}
+\item[機能]
+ダイクストラ法により始点から終点までの最短経路を求める。
+返り値には、始点から拡張点に至るまでのパスにおいて、各頂点の１つ前の頂点番号が格納された配列が返される。
+
+\item[インタフェース]\ \vspace{0mm}
+\begin{enumerate}
+  \item 引数: Integer start, Integer end
   \item 返り値の型: Integer[]
 \end{enumerate}
 \end{description}
