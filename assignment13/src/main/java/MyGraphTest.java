@@ -3,6 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 
 public class MyGraphTest {
     public static void main(String[] args) {
@@ -20,6 +21,9 @@ public class MyGraphTest {
 
             CoordsManager coordsManager = new CoordsManager();
             coordsManager.readFromFile(coordsFilename);
+
+            long startTime = System.nanoTime();
+
             int start = coordsManager.getClosestNode(startLongitude, startLatitude);
             int end = coordsManager.getClosestNode(endLongitude, endLatitude);
 
@@ -49,20 +53,24 @@ public class MyGraphTest {
                 Coord coord = coordsManager.getCoord(path.get(i));
                 lines[i] = String.format("%d %d", coord.getLongitude(), coord.getLatitude());
             }
+
+            long endTime = System.nanoTime();
+            System.out.println("Processing Time: " + (endTime - startTime) / 1.0e9 + " seconds");
+
             outputLines(resultFilename, lines);
         }
         catch (InputMismatchException ex) {
             System.out.println(ex.getMessage());
             System.exit(0);
         }
-        // catch (NoSuchElementException ex) {
-        //     System.out.println("The actual number of edges given is less than the number of edges specified in the file.");
-        //     System.exit(0);
-        // }
-        // catch (RuntimeException ex) {
-        //     System.out.println(ex.getMessage());
-        //     System.exit(0);
-        // }
+        catch (NoSuchElementException ex) {
+            System.out.println("The actual number of edges given is less than the number of edges specified in the file.");
+            System.exit(0);
+        }
+        catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
+            System.exit(0);
+        }
     }
 
     private static void outputLines(String outputFilename, String[] lines) {
