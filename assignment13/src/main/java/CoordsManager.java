@@ -40,6 +40,16 @@ public class CoordsManager {
         return (int)(Math.pow(longitude2 - longitude1, 2) + Math.pow(latitude2 - latitude1, 2));
     }
 
+    public Coord getCoord(int id) {
+        for (int i = 0; i < this.coords.size(); i++) {
+            Coord coord = this.coords.get(i);
+            if (coord.getId() == id) {
+                return coord;
+            }
+        }
+        throw new RuntimeException("No such id coordinate exist.");
+    }
+
     public int getClosestNode(int longitude, int latitude) {
         Integer minDistance = Integer.MAX_VALUE;
         int result = -1;

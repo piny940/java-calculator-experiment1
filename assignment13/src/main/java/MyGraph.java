@@ -6,10 +6,10 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class MyGraph {
-    private final int MAX_NODES_NUM = 50;
-    private final int MAX_EDGES_NUM = 100;
-    private final Integer MAX_WEIGHT = 9999;
-    private final Integer MIN_WEIGHT = 1;
+    private final int MAX_NODES_NUM = Integer.MAX_VALUE;
+    private final int MAX_EDGES_NUM = Integer.MAX_VALUE;
+    private final Integer MAX_WEIGHT = Integer.MAX_VALUE;
+    private final Integer MIN_WEIGHT = 0;
 
     private LinkedList<MyEdge>[] edges;
 
