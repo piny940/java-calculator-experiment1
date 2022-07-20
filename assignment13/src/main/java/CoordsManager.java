@@ -25,19 +25,21 @@ public class CoordsManager {
 
         scanner.close();
         } catch (FileNotFoundException ex) {
-            System.out.println("File not found.");
+            System.out.println("CoordsManager.java/File not found.");
             System.exit(0);
         } catch (NumberFormatException ex) {
-            System.out.println("Input must be an integer value.");
-            System.exit(0);
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("CoordsManager.java/Input must be an integer value.");
             System.exit(0);
         }
     }
 
-    private Integer getSquareDistance(int longitude1, int latitude1, int longitude2, int latitude2) {
-        return (int)(Math.pow(longitude2 - longitude1, 2) + Math.pow(latitude2 - latitude1, 2));
+    private double getSquareDistance(int longitude1, int latitude1, int longitude2, int latitude2) {
+        double dlong1 = (double)longitude1 / 1000000;
+        double dlat1 = (double)latitude1 / 1000000;
+        double dlong2 = (double)longitude2 / 1000000;
+        double dlat2 = (double)latitude2 / 1000000;
+
+        return (Math.pow(dlong2 - dlong1, 2) + Math.pow(dlat2 - dlat1, 2));
     }
 
     public Coord getCoord(int id) {
@@ -51,14 +53,15 @@ public class CoordsManager {
     }
 
     public int getClosestNode(int longitude, int latitude) {
-        Integer minDistance = Integer.MAX_VALUE;
+        double minDistance = Integer.MAX_VALUE;
         int result = -1;
 
         for (Coord coord : coords) {
-            Integer distance = this.getSquareDistance(longitude, latitude,
+            double distance = this.getSquareDistance(longitude, latitude,
                 coord.getLongitude(), coord.getLatitude());
             if (distance < minDistance) {
                 result = coord.getId();
+                minDistance = distance;
             }
         }
 

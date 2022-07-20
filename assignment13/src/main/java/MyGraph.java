@@ -65,15 +65,11 @@ public class MyGraph {
             scanner.close();
         }
         catch (FileNotFoundException ex) {
-            System.out.println("File not found.");
+            System.out.println("MyGraph.java/File not found.");
             System.exit(0);
         }
         catch (NumberFormatException ex) {
-            System.out.println("Input must be an integer value.");
-            System.exit(0);
-        }
-        catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("MyGraph.java/Input must be an integer value.");
             System.exit(0);
         }
     }
